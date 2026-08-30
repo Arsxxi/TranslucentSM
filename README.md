@@ -1,5 +1,7 @@
 # TranslucentSM — Reworked by Arsxxi (fork of rounk-ctrl)
-
+<p align="center">
+  <img src="Assets/yamadaaa.png" width="550" alt="Yamadaaa">
+</p>
 A lightweight utility that makes the Windows Start Menu translucent/transparent.<br>
 This app utilizes XAML Diagnostics to inject a dll into a process and modifies the XAML.
 
@@ -54,10 +56,6 @@ Upstream (rounk-ctrl):
 
 ![image](https://github.com/rounk-ctrl/TranslucentSM/assets/70931017/2987e096-7334-4172-a25b-0ddf9ee2665f)
 
-Watermark — yamadaaa (installer Welcome page):
-
-![yamadaaa watermark](Assets/yamadaaa.png)
-*Reworked by Arsxxi — yamadaaa art: Welcome page shows this image (rendered here from `Assets/yamadaaa.png`, tracked in repo). BMPs in `installer/` stay local-only (generated from PNG).*
 
 ## Build
 
