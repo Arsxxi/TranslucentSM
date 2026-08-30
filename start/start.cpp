@@ -68,7 +68,49 @@ int CreateDwords(HKEY subKey, LPCWSTR value, DWORD defVal)
 
 int main(int argc, char* argv[])
 {
-	std::cout << "Initializing...\nÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ\n";
+	bool daemon = false, quiet = false;
+	for (int i = 1; i < argc; i++) {
+		std::string a = argv[i];
+		if (a == "--daemon") daemon = true;
+		else if (a == "--quiet") quiet = true;
+	}
+
+	if (daemon) {
+		// Windows subsystem: no console to hide, but keep for Console fallback / old installs
+		HWND hwnd = GetConsoleWindow();
+		if (hwnd) ShowWindow(hwnd, SW_HIDE);
+		DWORD lastPid = 0;
+		while (true) {
+			Sleep(2000);
+			PROCESSENTRY32 entry;
+			entry.dwSize = sizeof(PROCESSENTRY32);
+			HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
+			DWORD pid = 0;
+			if (Process32First(snapshot, &entry) == TRUE) {
+				while (Process32Next(snapshot, &entry) == TRUE) {
+					if (wcscmp(entry.szExeFile, L"StartMenuExperienceHost.exe") == 0) {
+						pid = entry.th32ProcessID;
+					}
+				}
+			}
+			CloseHandle(snapshot);
+			if (pid && pid != lastPid) {
+				typedef HRESULT(*InitializeXamlDiagnosticsExProto)(_In_ LPCWSTR, _In_ DWORD, _In_opt_ LPCWSTR, _In_ LPCWSTR, _In_opt_ CLSID, _In_ LPCWSTR);
+				InitializeXamlDiagnosticsExProto InitializeXamlDiagnosticsExFn = (InitializeXamlDiagnosticsExProto)GetProcAddress(LoadLibraryEx(L"Windows.UI.Xaml.dll", NULL, LOAD_LIBRARY_SEARCH_SYSTEM32), "InitializeXamlDiagnosticsEx");
+				static constexpr GUID tapClsid = { 0x36162bd3, 0x3531, 0x4131, { 0x9b, 0x8b, 0x7f, 0xb1, 0xa9, 0x91, 0xef, 0x51 } };
+				wchar_t path[MAX_PATH];
+				GetModuleFileNameW(NULL, path, MAX_PATH);
+				std::wstring dir = std::wstring(path).substr(0, std::wstring(path).find_last_of(L"\\")) + L"\\StartTAP.dll";
+				if (std::filesystem::exists(dir)) {
+					InitializeXamlDiagnosticsExFn(L"VisualDiagConnection1", pid, NULL, dir.c_str(), tapClsid, L"");
+					lastPid = pid;
+				}
+			}
+		}
+		return 0;
+	}
+
+	std::cout << "Initializing...\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n";
 	PROCESSENTRY32 entry;
 	entry.dwSize = sizeof(PROCESSENTRY32);
 	std::wstring ok = L"StartMenuExperienceHost.exe";
