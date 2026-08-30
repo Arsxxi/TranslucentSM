@@ -5,10 +5,18 @@
 A lightweight utility that makes the Windows Start Menu translucent/transparent.<br>
 This app utilizes XAML Diagnostics to inject a dll into a process and modifies the XAML.
 
+
+
 Original: [rounk-ctrl/TranslucentSM](https://github.com/rounk-ctrl/TranslucentSM) • Fork: [Arsxxi/TranslucentSM](https://github.com/Arsxxi/TranslucentSM) • Installer: `Setup_TranslucentSM_v0.6.10.exe`
 
 > **Reworked by Arsxxi** — fork of [rounk-ctrl/TranslucentSM](https://github.com/rounk-ctrl/TranslucentSM) (GPL-3.0). Original ©2024 Rounak, this fork ©2026 Arsxxi, same license per GPL §5a. See [LICENSE](./LICENSE). Injection logic (XAML Diagnostics, CLSID `{36162BD3-3531-4131-9B8B-7FB1A991EF51}`) unchanged; changes are installer/startup only.
+## Screenshots
 
+Upstream (rounk-ctrl):
+
+![image](https://github.com/rounk-ctrl/TranslucentSM/assets/70931017/4a569f8c-f66a-45d3-9841-07d4a39a5063)
+
+![image](https://github.com/rounk-ctrl/TranslucentSM/assets/70931017/2987e096-7334-4172-a25b-0ddf9ee2665f)
 ## What's New in v0.6.10
 
 - **No CMD popup** — `start.exe` rebuilt as `Windows` GUI (`SubSystem:Windows`, `mainCRTStartup`) instead of Console. Daemon hides console fallback too (`start/start.cpp`).
@@ -47,15 +55,6 @@ Controls the luminosity brush (some secondary layer ig).
 
 ### `TintOpacity`
 The main acrylic brush.
-
-## Screenshots
-
-Upstream (rounk-ctrl):
-
-![image](https://github.com/rounk-ctrl/TranslucentSM/assets/70931017/4a569f8c-f66a-45d3-9841-07d4a39a5063)
-
-![image](https://github.com/rounk-ctrl/TranslucentSM/assets/70931017/2987e096-7334-4172-a25b-0ddf9ee2665f)
-
 
 ## Build
 
