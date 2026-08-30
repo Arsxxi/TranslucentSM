@@ -54,10 +54,10 @@ Upstream (rounk-ctrl):
 
 ![image](https://github.com/rounk-ctrl/TranslucentSM/assets/70931017/2987e096-7334-4172-a25b-0ddf9ee2665f)
 
-Watermark — yamadaaa (installer Welcome page, local-only art):
+Watermark — yamadaaa (installer Welcome page):
 
-![yamadaaa watermark](https://github.com/Arsxxi/TranslucentSM/releases/download/v0.6.10/yamadaaa.png)
-*Reworked by Arsxxi — yamadaaa art: Welcome page shows this image when built locally (`yamadaaa.png`/`.bmp` gitignored, never committed). README image is served via Release asset `v0.6.10/yamadaaa.png` — upload it alongside `Setup_*.exe` when you create the tag or this link 404s until then. CI without the file still builds text-only.*
+![yamadaaa watermark](Assets/yamadaaa.png)
+*Reworked by Arsxxi — yamadaaa art: Welcome page shows this image (rendered here from `Assets/yamadaaa.png`, tracked in repo). BMPs in `installer/` stay local-only (generated from PNG).*
 
 ## Build
 
