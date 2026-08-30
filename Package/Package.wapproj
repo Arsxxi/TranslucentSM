@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\start\start.vcxproj" />
-	<ProjectReference Include="..\TAPdll\TAPdll.vcxproj" />
+    <ProjectReference Include="..\StartTAP\StartTAP.vcxproj" />
   </ItemGroup>
   <Target Name="FlattenPackage" BeforeTargets="_ConvertItems">
     <ItemGroup>
